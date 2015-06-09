@@ -50,7 +50,7 @@ $(function(){
     <?php if (!empty($output['address_info']['address_id'])) {?>
     showShippingPrice(<?php echo $output['address_info']['city_id'];?>,<?php echo $output['address_info']['area_id'];?>);
     <?php } else {?>
-    $('#edit_reciver').click();
+    //  $('#edit_reciver').click();
     <?php }?>
 });
 </script>

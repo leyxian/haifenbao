@@ -55,6 +55,7 @@ $('input[name="receive"]').change(function(){
         $('#recever_type').val('10');
         $('dl.freight').show();
         $('dl.operation').show();
+        $('#edit_reciver').click();
         calcOrder();
     }else{
         $('#edit_reciver').parent('div').parent('div').hide();
