@@ -1,0 +1,85 @@
+@charset "utf-8";
+/* CSS Document */
+/* ======================================== */
+/* 商家中心相关样式表单						*/
+/* 创建:		Oct-15-2013						*/
+/* 修改：	    Oct-15-2013						*/
+/* ======================================== */
+
+/* 商品发布页面相关样式
+------------------------------------------- */
+
+
+/*商品添加步骤二运费模板样式 by hou*/
+/* 发布商品-属性 */
+.spec-bg { background-color: #FCFCFC;}
+.spec { font-size: 0; *word-spacing:-1px/*IE6、7*/; }
+.spec li { font-size: 12px; vertical-align: top; letter-spacing: normal; word-spacing: normal; display: inline-block; *display: inline/*IE6,7*/; width:25%; margin-bottom: 6px; zoom: 1;}
+.spec li span { line-height: 30px; vertical-align: middle; margin-right:6px;}
+.spec li span .text { vertical-align: middle; width: 130px;}
+.spec_table { background-color: #FFF; width: 98%; margin: 10px auto; border: solid 1px #BCE8F1; box-shadow: 3px 3px 0 rgba(153,153,153,0.15);}
+.spec_table thead th { font-weight: 600; line-height: 24px; color: #3A87AD; background: #D9EDF7; height: 24px; padding: 5px 10px;}
+.spec_table tbody td { height: 30px; padding: 5px 10px; border-top: solid 1px #BCE8F1;}
+.spec_table tbody td .text.price,
+.spec_table tbody td .text.stock { width: 40px;}
+.spec_table tbody td .text.sku { width: 100px;}
+
+
+
+
+
+/*商品添加步骤一*/
+.goods-release-success { width: 948px; margin-top: 20px; margin-bottom: 20px; padding: 30px; background-color: #F7FFE4; border: 1px solid #BAE241;}
+.goods-release-success h2 { font-size: 14px; line-height: 43px; font-weight: 700; background: url(../images/member/goods_add.gif) no-repeat left -100px; height: 43px; white-space: nowrap; padding-left: 50px;}
+.goods-release-success p { font-size: 16px; line-height: 32px; margin: 20px 0;}
+.goods-release-success p a { margin-left: 50px; _margin-left:25px;}
+.goods-release-success dl { 1px solid #BAE241;}
+.goods-release-success dl dt { line-height: 24px;}
+.goods-release-success dl dd { line-height: 20px; clear: both;}
+
+
+
+
+
+/* 商品发布表单样式*/
+.ncsc-form-goods { border: solid #E6E6E6; border-width: 1px 1px 0 1px;}
+.ncsc-form-goods h3 { font-size: 14px; font-weight: 600; line-height: 22px; color: #000; clear: both; background-color: #F5F5F5; padding: 5px 0 5px 12px; border-bottom: solid 1px #E7E7E7;}
+.ncsc-form-goods dl { font-size: 0; *word-spacing:-1px/*IE6、7*/; line-height: 20px; clear: both; padding: 0; margin: 0; border-bottom: solid 1px #E6E6E6; overflow: hidden;}
+
+.ncsc-form-goods dl:hover .hint { color: #666;}
+.ncsc-form-goods dl.bottom { border-bottom-width: 0px;}
+.ncsc-form-goods dl dt { font-size: 12px; line-height: 30px; color: #333; vertical-align: top; letter-spacing: normal; word-spacing: normal; text-align: right; display: inline-block; width: 13%; padding: 8px 1% 8px 0; margin: 0;}
+.ncsc-form-goods dl dt { *display: inline/*IE6,7*/;}
+.ncsc-form-goods dl dt i.required { font: 12px/16px Tahoma; color: #F30; vertical-align: middle; margin-right: 4px;}
+.ncsc-form-goods dl dd { font-size: 12px; line-height: 30px; vertical-align: top; letter-spacing: normal; word-spacing: normal; display: inline-block; width: 84%; padding: 8px 0 8px 1%; border-left: solid 1px #E6E6E6;}
+.ncsc-form-goods dl dd { *display: inline/*IE6,7*/;}
+.ncsc-form-goods dl dd p { clear: both;}
+
+.ncsc-form-goods textarea { width: 198px; height: 64px;}
+
+.goods-attribute { margin-top: 20px; margin-bottom: 20px; border: 1px solid #D3E5F3;}
+.goods-attribute dl.tit { background-color: #F4FAFE; padding:4px; width:990px;}
+.goods-attribute dl h3 { font-size: 14px; color: #3366CC; line-height: 20px; height: 20px; padding: 0;}
+.goods-attribute dl { display: block; width: 100%; float: left; padding: 0px; border-bottom: solid 1px #D3E5F3; clear: left; overflow: hidden;}
+.goods-attribute dl dt { line-height: 20px; color: #404040; text-align: right; display: block; width:110px; float: left; padding: 8px 8px 8px 0;}
+.goods-attribute dl dd { display: block; width: 863px; padding: 8px; float: left; border-left: solid 1px #D3E5F3;}
+.goods-attribute dl dt span { line-height:22px; padding: 0 4px;}
+
+.goods-attribute dl dd .new_add {}
+.goods-attribute dl dd.spec-dd {max-height:400px; _height:e-xpression(this.scrollHeight > 400 ? "400px" : "auto"); overflow:auto;}
+.goods-attribute dl dd .btn { line-height: 20px; text-align: center; color: #3e3e3e; text-decoration: none; background: url(../images/member/btn.gif) 0 -590px; display: inline; float: left; width: 78px; height: 24px; margin-left: 10px;}
+.goods-attribute dl dd .new_add i { float: left; color: #b9b9b9; margin-left: 10px; line-height: 22px; display: inline; font-style: normal;}
+.goods-attribute dl dd p { clear: both; }
+.goods-attribute dl .arrange { float: left; width: 358px; position: relative; }
+.goods-attribute dl .red { color: #FF3300; font-weight: bold;}
+.goods-attribute dl .gray { color: #b9b9b9; }
+.goods-attribute dl .unit { color: #3e3e3e; padding-left: 10px; }
+
+/* 增加商品+ - 数量样式*/
+.ncs-figure-input { position: relative; z-index: 1;}
+.ncs-figure-input a { font: 11px/12px sans-serif, serif, Arial; color: #AAA; background-color: #FFF; text-align: center; display: block; width: 15px; height: 12px; border: solid 1px #CCC; position: absolute; z-index: 1; left: 60px; -webkit-text-size-adjust:none;}
+.ncs-figure-input a:hover { color: #D93600; border-color: #D93600; text-decoration: none;}
+.ncs-figure-input a.increase { top: 4px;}
+.ncs-figure-input a.decrease { top: 20px;}
+.ncs-figure-input em { margin-left: 40px; color:#999;}
+.ncs-figure-input em strong { font-weight: 600; color: #555; vertical-align: top; margin: 0 4px;}

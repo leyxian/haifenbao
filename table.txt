@@ -1,0 +1,51 @@
+pre_goods   //商品表
+    id
+    name
+    jap_name
+    marque  型号
+    specifications  件或箱
+    weight
+    volume  体积
+    jap_price
+    is_cross    物流备案
+    vender_id   供应商信息ID
+    class_id    分类ID
+    good_date   生产日期
+    good_time   保质期
+    store_num
+    batch   批次
+    loaction  货位
+    stock   库存
+
+pre_order   //采购订单
+    id
+    name
+    jap_name
+    marque  型号
+    specifications  件或箱
+    weight
+    volume  体积
+    jap_price
+    is_cross    物流备案
+    class_id
+    vender_id   供应商信息ID
+    jap_budget  预算
+    good_date   生产日期
+    good_time   保质期
+    pay_time
+    recevice_time
+    is_store    是否入库
+    store_time
+    store_num
+    batch   批次
+    loaction    货位
+    distribution    配送
+    paying_vouchers 付款单据
+    goods_vouchers  购买合约商品单据
+
+pre_store   //出库表
+    id
+    store_num
+    store_time
+    distribution    配送
+

@@ -1,0 +1,7 @@
+1.进入根目录下mobile/readme,将mobile_20140207.sql导入数据库
+2.进入根目录下"wap"目录，修改文件js/config.js
+
+SiteUrl 	地址为B2B2C商城地址，例如：http://www.shopnc.net
+ApiUrl  	地址为B2B2C商城地址加上mobile,例如：http://www.shopnc.net/mobile
+WapSiteUrl	地址为B2B2C商城地址加上wap,例如：http://www.shopnc.net/wap
+AndroidSiteUrl	地址为B2B2C商城Android版下载手机客户端地址

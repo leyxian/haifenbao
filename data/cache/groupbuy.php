@@ -1,0 +1,1 @@
+<?php defined('ZQ-SHOP') or exit('Access Invalid!'); return array ( 'area' => array ( ), 'category' => array ( ), 'price' => array ( ), ) ?>
