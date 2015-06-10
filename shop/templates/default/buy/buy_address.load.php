@@ -3,8 +3,8 @@
 <ul>
   <?php foreach((array)$output['address_list'] as $k=>$val){ ?>
   <li class="receive_add address_item <?php echo $k == 0 ? 'ncc-selected-item' : null; ?>">
-    <input address="<?php echo $val['area_info'].'&nbsp;'.$val['address']; ?>" true_name="<?php echo $val['true_name']; ?>" id="addr_<?php echo $val['address_id']; ?>" nc_type="addr" type="radio" class="radio" city_id="<?php echo $val['city_id']?>" area_id=<?php echo $val['area_id'];?> name="addr" value="<?php echo $val['address_id']; ?>" phone="<?php echo $val['mob_phone'] ? $val['mob_phone'] : $val['tel_phone'];?>" <?php echo $k == 0 ? 'checked' : null; ?>/>
-    <label for="addr_<?php echo $val['address_id']; ?>"><span class="true-name"><?php echo $val['true_name']; ?></span><span class="address"><?php echo $val['area_info']; ?>&nbsp;<?php echo $val['address']; ?></span><span class="phone"><i class="icon-mobile-phone"></i><?php echo $val['mob_phone'] ? $val['mob_phone'] : $val['tel_phone'];?></span></label>
+    <input address="<?php echo $val['area_info'].'&nbsp;'.$val['address']; ?>" true_name="<?php echo $val['true_name']; ?>" id="addr_<?php echo $val['address_id']; ?>" nc_type="addr" type="radio" class="radio" city_id="<?php echo $val['city_id']?>" area_id=<?php echo $val['area_id'];?> name="addr" value="<?php echo $val['address_id']; ?>" id_number="<?php echo $val['id_number'];?>" phone="<?php echo $val['mob_phone'] ? $val['mob_phone'] : $val['tel_phone'];?>" <?php echo $k == 0 ? 'checked' : null; ?>/>
+    <label for="addr_<?php echo $val['address_id']; ?>"><span class="true-name"><?php echo $val['true_name']; ?></span><span class="address"><?php echo $val['area_info']; ?>&nbsp;<?php echo $val['address']; ?></span><span class="phone"><?php echo $val['id_number']; ?></span>&nbsp;&nbsp;<span class="phone"><i class="icon-mobile-phone"></i><?php echo $val['mob_phone'] ? $val['mob_phone'] : $val['tel_phone'];?></span></label>
     <a href="javascript:void(0);" onclick="delAddr(<?php echo $val['address_id']?>);" class="del">[ 删除 ]</a> </li>
   <?php } ?>
   <li class="receive_add addr_item">
@@ -40,10 +40,11 @@ $(function(){
             var area_id = $('input[name="addr"]:checked').attr('area_id');
             var addr_id = $('input[name="addr"]:checked').val();
             var true_name = $('input[name="addr"]:checked').attr('true_name');
+            var id_number = $('input[name="addr"]:checked').attr('id_number');
             var address = $('input[name="addr"]:checked').attr('address');
             var phone = $('input[name="addr"]:checked').attr('phone');
             showShippingPrice(city_id,area_id);
-            hideAddrList(addr_id,true_name,address,phone);
+            hideAddrList(addr_id,true_name,address,id_number,phone);
         }
     });
     if ($('input[nc_type="addr"]').size() == 1){

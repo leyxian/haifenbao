@@ -6,16 +6,16 @@
     <a href="javascript:void(0)" nc_type="buy_edit" id="edit_reciver">[修改]</a></div>
   <div id="addr_list" class="ncc-candidate-items">
     <ul>
-      <li><span class="true-name"><?php echo $output['address_info']['true_name'];?></span><span class="address"><?php echo $output['address_info']['area_info'],$output['address_info']['address'];?></span><span class="phone"><i class="icon-mobile-phone"></i><?php echo $output['address_info']['mob_phone'] ? $output['address_info']['mob_phone'] : $output['address_info']['tel_phone'];?></span></li>
+      <li><span class="true-name"><?php echo $output['address_info']['true_name'];?></span><span class="address"><?php echo $output['address_info']['area_info'],$output['address_info']['address'];?></span><span><?php echo $output['address_info']['id_number'];?></span>><span class="phone"><i class="icon-mobile-phone"></i><?php echo $output['address_info']['mob_phone'] ? $output['address_info']['mob_phone'] : $output['address_info']['tel_phone'];?></span></li>
     </ul>
   </div>
 </div>
 <script type="text/javascript">
 //隐藏收货地址列表
-function hideAddrList(addr_id,true_name,address,phone) {
+function hideAddrList(addr_id,true_name,address,card,phone) {
     $('#edit_reciver').show();
 	$("#address_id").val(addr_id);
-	$("#addr_list").html('<ul><li><span class="true-name">'+true_name+'</span><span class="address">'+address+'</span><span class="phone"><i class="icon-mobile-phone"></i>'+phone+'</span></li></ul>');
+	$("#addr_list").html('<ul><li><span class="true-name">'+true_name+'</span><span class="address">'+address+'</span><span class="address">'+card+'</span><span class="phone"><i class="icon-mobile-phone"></i>'+phone+'</span></li></ul>');
 	$('.current_box').removeClass('current_box');
 	ableOtherEdit();
 	$('#edit_payment').click();

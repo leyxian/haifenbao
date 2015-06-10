@@ -54,6 +54,9 @@ $(document).ready(function(){
             true_name : {
                 required : true
             },
+            card : {
+                required: true,
+            },
             area_id : {
                 required : true,
                 min   : 1,
@@ -76,7 +79,10 @@ $(document).ready(function(){
         },
         messages : {
             true_name : {
-                required : '<i class="icon-exclamation-sign"></i><?php echo $lang['cart_step1_input_receiver'];?>'
+                required : '<i class="icon-exclamation-sign"></i><?php echo $lang['cart_step1_input_receiver'];?>',
+            },
+            card : {
+                required : '<i class="icon-exclamation-sign"></i>请填写身份证',
             },
             area_id : {
                 required : '<i class="icon-exclamation-sign"></i><?php echo $lang['cart_step1_choose_area'];?>',
@@ -120,7 +126,7 @@ function submitAddAddr(){
             	var area_info = $.trim($("#area_info").val());
             	var address = $.trim($("#address").val());
             	showShippingPrice($('#city_id').val(),$('#area_id').val());
-            	hideAddrList(data.addr_id,true_name,area_info+'&nbsp;&nbsp;'+address,(mob_phone != '' ? mob_phone : tel_phone));
+            	hideAddrList(data.addr_id,true_name,area_info+'&nbsp;&nbsp;'+address,id_number,(mob_phone != '' ? mob_phone : tel_phone));
             }else{
                 alert(data.msg);
             }
