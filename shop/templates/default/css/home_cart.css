@@ -123,6 +123,10 @@ a:hover.ncc-btn-black { background-color: #222222; border-color: #1F1F1F #1F1F1F
 .ncc-receipt-info-title h3 strong { font: bold 18px/20px Verdana; color: #F30; margin-left: 4px;}
 .ncc-receipt-info.current_box { color: #534535; filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#3FFFF5CC', endColorstr='#3FFFF5CC');background:rgba(255,245,204,0.25); padding: 7px 17px; border: solid 3px #D93600;}
 
+.ncc-receipt-info-title { height: auto; }
+.ncc-receipt-info-title ol { font-size: 12px; color: grey; }
+.ncc-receipt-info-title ol li { display: inline-block; margin: 5px 20px 5px 0; }
+
 /* 表单提交样式 */
 .ncc-form-default { }
 .ncc-form-default dl { font-size: 0; *word-spacing:-1px/*IE6、7*/; line-height: 20px; clear: both; padding: 0; margin: 0; overflow: hidden;}

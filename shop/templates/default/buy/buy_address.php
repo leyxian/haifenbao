@@ -3,6 +3,7 @@
 <div class="ncc-receipt-info" style="display:none;">
   <div class="ncc-receipt-info-title">
     <h3>收货人信息</h3>
+    <ol><li>1. 身份证与收货人姓名必须一致</li><li>2. 单个用户每天下单不超1000元</li><li>3. 每周单个用户下单不得超过三次</li><li>4. 每单不超过500元</li></ol>
     <a href="javascript:void(0)" nc_type="buy_edit" id="edit_reciver">[修改]</a></div>
   <div id="addr_list" class="ncc-candidate-items">
     <ul>

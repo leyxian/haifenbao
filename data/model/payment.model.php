@@ -95,13 +95,14 @@ class paymentModel extends Model {
         if(!$payment_info) {
             return array('error' => '系统不支持选定的支付方式');
         }
-
         //验证订单信息
 	    $model_order = Model('order');
 	    $order_pay_info = $model_order->getOrderPayInfo(array('pay_sn'=>$pay_sn,'buyer_id'=>$member_id));
 	    if(empty($order_pay_info)){
             return array('error' => '该订单不存在');
 	    }
+        $order_info = $model_order->table('order')->field('order_flow')->where(array('pay_sn'=>$pay_sn, 'buyer_id'=> $member_id))->find();
+        $order_pay_info['order_flow'] = &$order_info['order_flow'];
 	    $order_pay_info['subject'] = '商品购买_'.$order_pay_info['pay_sn'];
 	    $order_pay_info['order_type'] = 'product_buy';
 

@@ -89,6 +89,12 @@
         </dd>
       </dl>
       <dl>
+        <dt><i class="required">*</i>重量</dt>
+        <dd>
+          <input name="g_weight" type="text" class="text w60" value="<?php echo $output['goods']['goods_weight']; ?>" /><em class="add-on"><i class="icon-weight"></i></em><span></span>
+        </dd>
+      </dl>
+      <dl>
         <dt>折扣<?php echo $lang['nc_colon'];?></dt>
         <dd>
           <input name="g_discount" value="<?php echo $output['goods']['goods_discount']; ?>" type="text" class="text w60" readonly="readonly" style="background:#E7E7E7 none;" /><em class="add-on">%</em>
@@ -521,6 +527,12 @@ $(function(){
                 min         : 0.00,
                 max         : 9999999
             },
+            g_weight : {
+              required  : true,
+              number  : true,
+              min : 0.01,
+              max  : 9999999
+            },
             g_storage  : {
                 required    : true,
                 digits      : true,
@@ -556,6 +568,12 @@ $(function(){
                 number      : '<i class="icon-exclamation-sign"></i>请填写正确的价格',
                 min         : '<i class="icon-exclamation-sign"></i>请填写0.00~9999999之间的数字',
                 max         : '<i class="icon-exclamation-sign"></i>请填写0.00~9999999之间的数字'
+            },
+            g_weight : {
+                required    : '<i class="icon-exclamation-sign"></i>请填写重量',
+                number      : '<i class="icon-exclamation-sign"></i>请填写正确的重量',
+                min         : '<i class="icon-exclamation-sign"></i>请填写0.01~9999999之间的数字',
+                max         : '<i class="icon-exclamation-sign"></i>请填写0.01~9999999之间的数字'
             },
             g_storage : {
                 required    : '<i class="icon-exclamation-sign"></i><?php echo $lang['store_goods_index_goods_stock_null'];?>',

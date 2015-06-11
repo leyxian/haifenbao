@@ -165,6 +165,7 @@ class store_goods_addControl extends BaseSellerControl {
             $common_array['goods_image']        = $_POST['image_path'];
             $common_array['goods_price']        = floatval($_POST['g_price']);
             $common_array['goods_marketprice']  = floatval($_POST['g_marketprice']);
+            $common_array['goods_weight']  = intval($_POST['g_weight']);
             $common_array['goods_costprice']    = floatval($_POST['g_costprice']);
             $common_array['goods_discount']     = floatval($_POST['g_discount']);
             $common_array['goods_serial']       = $_POST['g_serial'];
@@ -209,6 +210,8 @@ class store_goods_addControl extends BaseSellerControl {
                         $goods['brand_id']          = $common_array['brand_id'];
                         $goods['goods_price']       = $value['price'];
                         $goods['goods_marketprice'] = $common_array['goods_marketprice'];
+                        $goods['goods_weight'] = $common_array['goods_weight'];
+                        $goods['goods_weight'] = 
                         $goods['goods_serial']      = $value['sku'];
                         $goods['goods_spec']        = serialize($value['sp_value']);
                         $goods['goods_storage']     = $value['stock'];
@@ -244,6 +247,7 @@ class store_goods_addControl extends BaseSellerControl {
                     $goods['brand_id']          = $common_array['brand_id'];
                     $goods['goods_price']       = $common_array['goods_price'];
                     $goods['goods_marketprice'] = $common_array['goods_marketprice'];
+                    $goods['goods_weight'] = $common_array['goods_weight'];
                     $goods['goods_serial']      = $common_array['goods_serial'];
                     $goods['goods_spec']        = serialize(null);
                     $goods['goods_storage']     = intval($_POST['g_storage']);

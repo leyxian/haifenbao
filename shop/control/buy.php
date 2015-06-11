@@ -101,7 +101,7 @@ class buyControl extends BaseBuyControl {
         $condition = array();
         $condition['pay_sn'] = $pay_sn;
         $condition['order_state'] = array('in',array(ORDER_STATE_NEW,ORDER_STATE_PAY));
-        $order_list = $model_order->getOrderList($condition,'','order_id,order_state,payment_code,order_amount,pd_amount,order_sn');
+        $order_list = $model_order->getOrderList($condition,'','order_id,order_state,payment_code,order_amount,pd_amount,order_sn,order_flow');
         if (empty($order_list)) {
             showMessage('未找到需要支付的订单','index.php?act=member_order','html','error');
         }
@@ -168,6 +168,11 @@ class buyControl extends BaseBuyControl {
             }
             if (empty($payment_list)) {
                 showMessage('暂未找到合适的支付方式','index.php?act=member_order','html','error');
+            }
+            if($order_list[0]['order_flow']==10){
+                unset($payment_list['alipay']);
+            }elseif($order_list[0]['order_flow']==20){
+                unset($payment_list['alipay_int']);
             }
             Tpl::output('payment_list',$payment_list);
         }

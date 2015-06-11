@@ -49,3 +49,9 @@ pre_store   //出库表
     store_time
     distribution    配送
 
+
+ALTER TABLE `zqshop_goods`
+ADD COLUMN `goods_weight`  int(10) NOT NULL DEFAULT 0 COMMENT '重量g' AFTER `goods_costprice`;
+
+ALTER TABLE `zqshop_goods_common`
+ADD COLUMN `goods_weight`  int(10) NOT NULL DEFAULT 0 COMMENT '商品重量g' AFTER `goods_marketprice`;

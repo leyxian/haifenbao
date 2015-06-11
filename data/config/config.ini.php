@@ -1,15 +1,15 @@
 <?php
 defined('ZQ-SHOP') or exit('Access Invalid!');
 $config = array();
-$config['shop_site_url'] 		= 'http://www.shop.com/shop';
-$config['cms_site_url'] 		= 'http://www.shop.com/cms';
-$config['microshop_site_url'] 	= 'http://www.shop.com/microshop';
-$config['circle_site_url'] 		= 'http://www.shop.com/circle';
-$config['admin_site_url'] 		= 'http://www.shop.com/admin';
-$config['mobile_site_url'] 		= 'http://www.shop.com/mobile';
-$config['wap_site_url'] 		= 'http://www.shop.com/wap';
-$config['upload_site_url']		= 'http://www.shop.com/data/upload';
-$config['resource_site_url']	= 'http://www.shop.com/data/resource';
+$config['shop_site_url'] 		= 'http://www.shop.dev/shop';
+$config['cms_site_url'] 		= 'http://www.shop.dev/cms';
+$config['microshop_site_url'] 	= 'http://www.shop.dev/microshop';
+$config['circle_site_url'] 		= 'http://www.shop.dev/circle';
+$config['admin_site_url'] 		= 'http://www.shop.dev/admin';
+$config['mobile_site_url'] 		= 'http://www.shop.dev/mobile';
+$config['wap_site_url'] 		= 'http://www.shop.dev/wap';
+$config['upload_site_url']		= 'http://www.shop.dev/data/upload';
+$config['resource_site_url']	= 'http://www.shop.dev/data/resource';
 $config['version'] 		= '201505201149';
 $config['setup_date'] 	= '2015-05-20 11:49:54';
 $config['gip'] 			= 0;

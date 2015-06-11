@@ -76,6 +76,7 @@ class store_goods_onlineControl extends BaseSellerControl {
         
         $goodscommon_info['g_storage'] = $model_goods->getGoodsSum($where, 'goods_storage');
         $goodscommon_info['spec_name'] = unserialize($goodscommon_info['spec_name']);
+
         Tpl::output('goods', $goodscommon_info);
 
         if (intval($_GET['class_id']) > 0) {
@@ -231,6 +232,7 @@ class store_goods_onlineControl extends BaseSellerControl {
         $update_common['goods_price']        = floatval($_POST['g_price']);
         $update_common['goods_marketprice']  = floatval($_POST['g_marketprice']);
         $update_common['goods_costprice']    = floatval($_POST['g_costprice']);
+        $update_common['goods_weight'] = intval($_POST['g_weight']);
         $update_common['goods_discount']     = floatval($_POST['g_discount']);
         $update_common['goods_serial']       = $_POST['g_serial'];
         $update_common['goods_attr']         = serialize($_POST['attr']);
@@ -280,6 +282,7 @@ class store_goods_onlineControl extends BaseSellerControl {
                         $update['brand_id']          = $update_common['brand_id'];
                         $update['goods_price']       = $value['price'];
                         $update['goods_marketprice'] = $update_common['goods_marketprice'];
+                        $update['goods_weight'] = $update_common['goods_weight'];
                         $update['goods_serial']      = $value['sku'];
                         $update['goods_spec']        = serialize($value['sp_value']);
                         $update['goods_storage']     = $value['stock'];
@@ -310,6 +313,7 @@ class store_goods_onlineControl extends BaseSellerControl {
                         $insert['brand_id']          = $update_common['brand_id'];
                         $insert['goods_price']       = $value['price'];
                         $insert['goods_marketprice'] = $update_common['goods_marketprice'];
+                        $insert['goods_weight'] = $update_common['goods_weight'];
                         $insert['goods_serial']      = $value['sku'];
                         $insert['goods_spec']        = serialize($value['sp_value']);
                         $insert['goods_storage']     = $value['stock'];
@@ -351,6 +355,7 @@ class store_goods_onlineControl extends BaseSellerControl {
                     $update['brand_id']          = $update_common['brand_id'];
                     $update['goods_price']       = $update_common['goods_price'];
                     $update['goods_marketprice'] = $update_common['goods_marketprice'];
+                    $update['goods_weight'] = $update_common['goods_weight'];
                     $update['goods_serial']      = $update_common['goods_serial'];
                     $update['goods_spec']        = serialize(null);
                     $update['goods_storage']     = intval($_POST['g_storage']);
@@ -381,6 +386,7 @@ class store_goods_onlineControl extends BaseSellerControl {
                     $insert['brand_id']          = $update_common['brand_id'];
                     $insert['goods_price']       = $update_common['goods_price'];
                     $insert['goods_marketprice'] = $update_common['goods_marketprice'];
+                    $insert['goods_weight'] = $update_common['goods_weight'];
                     $insert['goods_serial']      = $update_common['goods_serial'];
                     $insert['goods_spec']        = serialize(null);
                     $insert['goods_storage']     = intval($_POST['g_storage']);

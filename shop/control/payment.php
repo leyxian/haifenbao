@@ -33,13 +33,17 @@ class paymentControl extends BaseHomeControl{
 
         $model_payment = Model('payment');
         $result = $model_payment->productBuy($pay_sn, $payment_code, $_SESSION['member_id']);
-
         if(!empty($result['error'])) {
             showMessage($result['error'], $url, 'html', 'error');
         }
-
-        //第三方API支付
-        $this->_api_pay($result['order_pay_info'], $result['payment_info']);
+        if($result['order_flow'] == 20){  //10:直发,20:微仓
+            //第三方API支付
+            $this->_api_pay($result['order_pay_info'], $result['payment_info']);
+        }else{
+            //国际支付宝
+            
+        }
+        
 	}
 
 	/**

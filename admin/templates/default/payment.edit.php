@@ -75,7 +75,32 @@
           <td class="vatop rowform"><input name="alipay_partner" id="alipay_partner" value="<?php echo $output['config_array']['alipay_partner'];?>" class="txt" type="text"></td>
           <td class="vatop tips"><a href="https://b.alipay.com/order/pidKey.htm?pid=2088001525694587&product=fastpay" target="_blank">get my key and partner ID</a></td>
         </tr>
-        <?php } ?>
+        <?php }elseif ($output['payment']['payment_code'] == 'alipay_int') { ?>
+ <!--       <tr>
+          <td colspan="2" class="required"><?php //echo $lang['payment_alipay_account'];?>: </td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="hidden" name="config_name" value="alipay_service,alipay_account,alipay_key,alipay_partner" />
+          	<input type="hidden" name="alipay_service" value="create_direct_pay_by_user" />
+            <input name="alipay_account" id="alipay_account" value="<?php //echo $output['config_array']['alipay_account'];?>" class="txt" type="text"></td>
+          <td class="vatop tips"></td>
+        </tr>-->
+        <tr><input type="hidden" name="config_name" value="alipay_service,alipay_account,alipay_key,alipay_partner" />
+          	<input type="hidden" name="alipay_service" value="create_direct_pay_by_user" />
+          <td colspan="2" class="required"><?php echo $lang['payment_alipay_key'];?>: </td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input name="alipay_key" id="alipay_key" value="<?php echo $output['config_array']['alipay_key'];?>" class="txt" type="text"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><?php echo $lang['payment_alipay_partner'];?>: </td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input name="alipay_partner" id="alipay_partner" value="<?php echo $output['config_array']['alipay_partner'];?>" class="txt" type="text"></td>
+          <td class="vatop tips">&nbsp;</td>
+        </tr>
+        <?php } ?>       
         <tr>
           <td colspan="2" class="required"><?php echo $lang['payment_index_enable'];?>: </td>
         </tr>
