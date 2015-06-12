@@ -78,15 +78,15 @@ class store_goods_addControl extends BaseSellerControl {
             showDialog(L('store_goods_index_again_choose_category1'));
         }
         
-/*        // 三方店铺验证是否绑定了该分类
-        if (!checkPlatformStore()) {
-            $where['class_1|class_2|class_3'] = $gc_id;
-            $where['store_id'] = $_SESSION['store_id'];
-            $rs = Model('store_bind_class')->getStoreBindClassInfo($where);
-            if (empty($rs)) {
-                showMessage(L('store_goods_index_again_choose_category2'));
-            }
-        }*/
+        // 三方店铺验证是否绑定了该分类
+        // if (!checkPlatformStore() or 1==1) {
+        //     $where['class_1|class_2|class_3'] = $gc_id;
+        //     $where['store_id'] = $_SESSION['store_id'];
+        //     $rs = Model('store_bind_class')->getStoreBindClassInfo($where);
+        //     if (empty($rs)) {
+        //         showMessage(L('store_goods_index_again_choose_category2'));
+        //     }
+        // }
         
         // 更新常用分类信息
         $goods_class = $model_goodsclass->getGoodsClassLineForTag($gc_id);
@@ -104,10 +104,11 @@ class store_goods_addControl extends BaseSellerControl {
         }
         
         // 实例化店铺商品分类模型
-        $store_goods_class = Model('my_goods_class')->getClassTree(array(
-                'store_id' => $_SESSION ['store_id'],
-                'stc_state' => '1'
-        ));
+        // $store_goods_class = Model('my_goods_class')->getClassTree(array(
+        //         'store_id' => $_SESSION ['store_id'],
+        //         'stc_state' => '1'
+        // ));
+        $store_goods_class = Model('goods_class')->getClassTree();
         Tpl::output('store_goods_class', $store_goods_class);
         
         // 小时分钟显示
@@ -120,7 +121,7 @@ class store_goods_addControl extends BaseSellerControl {
         $plate_list = Model('store_plate')->getPlateList(array('store_id' => $_SESSION['store_id']), 'plate_id,plate_name,plate_position');
         $plate_list = array_under_reset($plate_list, 'plate_position', 2);
         Tpl::output('plate_list', $plate_list);
-        
+
         Tpl::output('item_id', '');
         Tpl::output('menu_sign', 'add_goods_stpe2');
         Tpl::showpage('store_goods_add.step2');

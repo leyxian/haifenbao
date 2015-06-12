@@ -45,20 +45,24 @@
     <table class="table tb-type2">
         <tr>
             <th>采购编号</th>
+			 <th>供应商</th>
             <th>商品名</th>
             <th>日文名称</th>
-            <th>客服</th>
+            <th>数量</th>
             <th>商品规格</th>
-            <th>供应商</th>
+             <th>入库数量</th>
             <th>价格</th>
             <th>重量</th>
             <th>体积</th>
             <th>生产日期</th>
             <th>保质期</th>
-            <th>数量</th>
-            <th>入库数量</th>
+
+
+            <th>支付方式</th>
+            <th>订购时间</th>			
             <th>支付时间</th>
-            <th>订购时间</th>
+
+            <th>客服</th>			
             <th>修改时间</th>
             <th>修改客服</th>
             <!-- <th>是否入库</th> -->
@@ -67,22 +71,26 @@
         <?php if($output['list']){ foreach ($output['list'] as $v) { ?>
         <tr>
             <td><?php echo $v['id']?></td>
-            <td><?php echo $v['goods']['goods_name']?></td>
-            <td><?php echo $v['goods']['jap_name']?></td>
-            <td><?php echo $v['author']?></td>
-            <td><?php echo $v['marque'].'&nbsp;'.$v['specifications']?></td>
             <td>
                 <?php echo $v['vender']['name'].'<br/>'.$v['vender']['link_user'].'<br/>'.$v['vender']['link_tel'];?>
-            </td>
-            <td><?php echo $v['jap_price']?></td>
-            <td><?php echo sprintf('%.2f', $v['weight']);?></td>
-            <td><?php echo sprintf('%.2f', $v['volume']);?></td>
+            </td>			
+            <td><?php echo $v['goods']['goods_name']?></td>
+            <td><?php echo $v['goods']['jap_name']?></td>
+            <td><?php echo $v['store_num']?></td>
+            <td><?php echo $v['marque'].'&nbsp;'.$v['specifications']?></td>
+            <td><?php echo $v['in_num']?></td>
+            <td><?php echo $v['jap_price']?>JPY</td>
+            <td><?php echo sprintf('%.2f', $v['weight']);?>G</td>
+            <td><?php echo sprintf('%.2f', $v['volume']);?>cm³</td>
             <td><?php if($v['good_date']) echo date('Y-m-d', $v['good_date']);?></td>
             <td><?php if($v['good_time']) echo date('Y-m-d', $v['good_time']);?></td>
-            <td><?php echo $v['store_num']?></td>
-            <td><?php echo $v['in_num']?></td>
+
+
+            <td><?php echo $v['pay_type'];?></td>
+            <td><?php if($v['addtime']) echo date('Y-m-d H:i', $v['addtime']);?></td>			
             <td><?php if($v['pay_time']) echo date('Y-m-d H:i', $v['pay_time']); else echo '未支付';?></td>
-            <td><?php if($v['addtime']) echo date('Y-m-d H:i', $v['addtime']);?></td>
+
+            <td><?php echo $v['author']?></td>			
             <td><?php if($v['updatetime']) echo date('Y-m-d H:i', $v['updatetime']);?></td>
             <td><?php echo $v['edit_author'];?></td>
             <!-- <td><?php if($v['store_time']) echo '已入库';?></td> -->

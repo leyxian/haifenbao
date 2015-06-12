@@ -55,3 +55,9 @@ ADD COLUMN `goods_weight`  int(10) NOT NULL DEFAULT 0 COMMENT '重量g' AFTER `g
 
 ALTER TABLE `zqshop_goods_common`
 ADD COLUMN `goods_weight`  int(10) NOT NULL DEFAULT 0 COMMENT '商品重量g' AFTER `goods_marketprice`;
+
+0612
+ALTER TABLE `zqshop_pur_suppliers`
+ADD COLUMN `link_email`  varchar(20) NULL COMMENT '邮箱' AFTER `link_tel`;
+ALTER TABLE `zqshop_pur_order`
+ADD COLUMN `pay_type`  varchar(20) NULL COMMENT '付款方式' AFTER `jap_price`;

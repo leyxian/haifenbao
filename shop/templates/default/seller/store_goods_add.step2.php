@@ -311,7 +311,7 @@
       <dl>
         <dt><?php echo $lang['store_goods_index_store_goods_class'].$lang['nc_colon'];?></dt>
         <dd><span class="new_add"><a href="javascript:void(0)" id="add_sgcategory" class="ncsc-btn"><?php echo $lang['store_goods_index_new_class'];?></a> </span>
-          <?php if (!empty($output['store_class_goods'])) { ?>
+          <?php if (!empty($output['store_class_goods'])) {?>
           <?php foreach ($output['store_class_goods'] as $v) { ?>
           <select name="sgcate_id[]" class="sgcategory">
             <option value="0"><?php echo $lang['nc_please_choose'];?></option>
@@ -320,6 +320,10 @@
             <?php if (is_array($val['child']) && count($val['child'])>0){?>
             <?php foreach ($val['child'] as $child_val){?>
             <option value="<?php echo $child_val['stc_id']; ?>" <?php if ($v==$child_val['stc_id']) { ?>selected="selected"<?php } ?>>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $child_val['stc_name']; ?></option>
+            <?php if(is_array($child_val['child']) && $child_val['child'])?>
+            <?php foreach ($child_val['child'] as $child_val_val) { ?>
+            <option value="<?php echo $child_val_val['stc_id']; ?>" <?php if ($v==$child_val_val['stc_id']) { ?>selected="selected"<?php } ?>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $child_val_val['stc_name']; ?></option>
+            <?php }?>
             <?php }?>
             <?php }?>
             <?php } ?>
@@ -334,6 +338,10 @@
             <?php if (is_array($val['child']) && count($val['child'])>0){?>
             <?php foreach ($val['child'] as $child_val){?>
             <option value="<?php echo $child_val['stc_id']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $child_val['stc_name']; ?></option>
+            <?php if(is_array($child_val['child']) && $child_val['child'])?>
+            <?php foreach ($child_val['child'] as $child_val_val) { ?>
+            <option value="<?php echo $child_val_val['stc_id']; ?>" <?php if ($v==$child_val['stc_id']) { ?>selected="selected"<?php } ?>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $child_val_val['stc_name']; ?></option>
+            <?php }?>
             <?php }?>
             <?php }?>
             <?php } ?>

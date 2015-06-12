@@ -101,7 +101,9 @@ class purControl extends SystemControl {
 
                 TPL::showpage('pur.add.goods');
                 break;
-            
+            case 'suppliers':
+                TPL::showpage('pur.add.suppliers');
+                break;
             default:
                 $goods = Model('pur_goods')->select();
                 $specs = Model('pur_unit')->select();
@@ -185,13 +187,14 @@ class purControl extends SystemControl {
                 $name = $_POST['name'];
                 $user = $_POST['user'];
                 $tel = $_POST['tel'];
+                $email = $_POST['email'];
                 if($name && $user && $tel){
                     $table = Model('pur_suppliers');
                     if($table->where('name=\''.$name.'\' AND link_user=\''.$user.'\' AND link_tel=\''.$tel.'\'')->find()){
                         $data['status'] = 0;
                         $data['msg'] = '已存在';
                     }else{
-                        $table->insert(array('name'=>$name, 'link_user'=>$user, 'link_tel'=>$tel));
+                        $table->insert(array('name'=>$name, 'link_user'=>$user, 'link_tel'=>$tel, 'link_email'=>$email));
                         $data['data'] = array('id'=>$table->getLastID());
                         $data['status'] = 1;
                         $data['msg'] = '成功';
@@ -311,7 +314,8 @@ class purControl extends SystemControl {
                 $good_date = $_POST['good_date'];
                 $good_time = $_POST['good_time'];
                 $store_num = $_POST['store_num'];
-                $location = $_POST['location'];
+                $location = isset($_POST['location']) ? $_POST['location'] : '';
+                $pay_type = isset($_POST['pay_type']) ? $_POST['pay_type'] : '';
                 if($_POST['pay_date']){
                     $pay_date = $_POST['pay_date'];
                     $pay_time = $_POST['pay_time'];
@@ -322,15 +326,16 @@ class purControl extends SystemControl {
                             'goods_id' => $goods_id,
                             'marque' => $marque,
                             'specifications' => $specifications,
-                            'weight' => $weight,
+                            'weight' => $weight ? $weight : 0,
                             'volume' => $volume,
                             'jap_price' => $jap_price,
                             'vender_id' => $vender,
-                            'good_date' => strtotime($good_date),
-                            'good_time' => strtotime($good_time),
+                            'good_date' => $good_date ? strtotime($good_date) : 0,
+                            'good_time' => $good_time ? strtotime($good_time) : 0,
                             'store_num' => $store_num,
                             'addtime' => $_SERVER['REQUEST_TIME'],
                             'author' => $admininfo['name'],
+                            'pay_type' => $pay_type,
                             'pay_time' => $_POST['pay_date'] ? strtotime($pay_date.' '.$pay_time) : '0'
                         )
                     );
@@ -378,6 +383,8 @@ class purControl extends SystemControl {
                     $udata['link_user'] = $_POST['link_user'];
                 if($_POST['link_tel'])
                     $udata['link_tel'] = $_POST['link_tel'];
+                if($_POST['link_email'])
+                    $udata['link_email'] = $_POST['link_email'];
                 if($udata){
                     if($id){
                         $udata['id'] = $id;
@@ -432,6 +439,8 @@ class purControl extends SystemControl {
                     $udata['good_time'] = strtotime($_POST['good_time']);
                 if($_POST['store_num'])
                     $udata['store_num'] = $_POST['store_num'];
+                if($_POST['pay_type'])
+                    $udata['pay_type'] = $_POST['pay_type'];
                 if($_POST['pay_date'])
                     $udata['pay_time'] = strtotime($_POST['pay_date'].' '.$_POST['pay_time']);
                 if($udata){

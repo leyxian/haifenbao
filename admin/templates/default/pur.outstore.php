@@ -37,36 +37,40 @@
     <table class="table tb-type2">
         <tr>
             <th>库存编号</th>
+            <th>供应商</th>			
             <th>商品名</th>
             <th>日文名称</th>
-            <th>客服</th>
+            <th>数量</th>
             <th>商品规格</th>
-            <th>供应商</th>
+
             <th>价格</th>
             <th>重量</th>
             <th>体积</th>
             <th>生产日期</th>
             <th>保质期</th>
-            <th>数量</th>
+
             <th>出库时间</th>
+            <th>客服</th>			
         </tr>
         <?php if($output['list']){ foreach ($output['list'] as $v) { ?>
         <tr>
             <td><?php echo $v['instore_id']; ?></td>
-            <td><?php echo $v['goods']['goods_name']; ?></td>
-            <td><?php echo $v['goods']['jap_name']; ?></td>
-            <td><?php echo $v['author']; ?></td>
-            <td><?php echo $v['order']['marque'].'&nbsp;'.$v['order']['specifications']?></td>
             <td>
                 <?php echo $v['vender']['name'].'<br/>'.$v['vender']['link_user'].'<br/>'.$v['vender']['link_tel'];?>
-            </td>
-            <td><?php echo $v['order']['jap_price']?></td>
-            <td><?php echo sprintf('%.2f', $v['order']['weight']);?></td>
-            <td><?php echo sprintf('%.2f', $v['order']['volume']);?></td>
+            </td>			
+            <td><?php echo $v['goods']['goods_name']; ?></td>
+            <td><?php echo $v['goods']['jap_name']; ?></td>
+            <td><?php echo $v['store_num']?></td>
+            <td><?php echo $v['order']['marque'].'&nbsp;'.$v['order']['specifications']?></td>
+
+            <td><?php echo $v['order']['jap_price']?>JPY</td>
+            <td><?php echo sprintf('%.2f', $v['order']['weight']);?>G</td>
+            <td><?php echo sprintf('%.2f', $v['order']['volume']);?>cm³</td>
             <td><?php if($v['order']['good_date']) echo date('Y-m-d', $v['order']['good_date']);?></td>
             <td><?php if($v['order']['good_time']) echo date('Y-m-d', $v['order']['good_time']);?></td>
-            <td><?php echo $v['store_num']?></td>
+
             <td><?php if($v['addtime']) echo date('Y-m-d H:i', $v['addtime']);?></td>
+            <td><?php echo $v['author']; ?></td>			
         </tr>
         <?php } ?>
         <tr>

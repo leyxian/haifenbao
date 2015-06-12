@@ -24,6 +24,19 @@ class goods_classModel extends Model{
         return $result;
     }
 
+    public function getClassTree($id=0){
+        $class_list = $this->getGoodsClassList('gc_parent_id='.$id,'gc_id AS stc_id,gc_name AS stc_name,gc_parent_id AS stc_parent_id');
+        $d = array();
+        if(is_array($class_list))
+            foreach ($class_list as $k => $v) {
+                $row = $this->getClassTree($v['stc_id']);
+                if($row)
+                    $v['child'] = $row;
+                $d[$v['stc_id']] = $v;
+            }
+        return $d;
+    }
+    
     /**
      * 类别详细
      * 

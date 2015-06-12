@@ -21,6 +21,25 @@
     <div class="fixed-empty"></div>
     <form action="index.php?act=pur&op=store" method="post" name="pur_store">
         <table class="table tb-type2">
+		
+            <tr>
+                <td colspan="2">
+                    <label>供应商：</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="vatop">
+                    <select id="vender" name="vender">
+                        <option value="">请选择</option>
+                        <?php if($output['venders']) foreach ($output['venders'] as $v) { ?>
+                        <option value="<?php echo $v['id'];?>"><?php echo $v['name'].'&nbsp;'.$v['link_user'].'&nbsp;'.$v['link_tel'];?></option>
+                        <?php } ?>
+                    </select>
+                    &nbsp;&nbsp;
+                    <a href="javascript:" id="vender_add">增加选项</a>
+                </td>
+                <td class="vatop tips"></td>
+            </tr>		
             <tr>
                 <td colspan="2">
                     <label class="validation">商品</label>
@@ -41,13 +60,24 @@
             </tr>
             <tr>
                 <td colspan="2">
+                    <label class="validation">采购数量：</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="vatop">
+                    <input class="txt" type="number" value="" name="store_num" id="store_num"/>
+                </td>
+                <td class="vatop tips"></td>
+            </tr>			
+            <tr>
+                <td colspan="2">
                     <label>商品规格：</label>
                 </td>
             </tr>
             <tr>
                 <td class="vatop">
-                    <input class="txt" type="text" value="" name="marque" id="marque" maxlength="50" class="txt">
-                    <select id="specifications" name="specifications">
+                    商品型号[可以为空]：<input class="txt" type="text" value="" name="marque" id="marque" maxlength="50">
+                    &nbsp;&nbsp;计量单位：<select id="specifications" name="specifications">
                         <option value="">请选择</option>
                         <?php if($output['specs']) foreach ($output['specs'] as $v) { ?>
                         <option value="<?php echo $v['name'];?>"><?php echo $v['name'];?></option>
@@ -58,24 +88,7 @@
                 </td>
                 <td class="vatop tips"></td>
             </tr>
-            <tr>
-                <td colspan="2">
-                    <label>供应商：</label>
-                </td>
-            </tr>
-            <tr>
-                <td class="vatop">
-                    <select id="vender" name="vender">
-                        <option value="">请选择</option>
-                        <?php if($output['venders']) foreach ($output['venders'] as $v) { ?>
-                        <option value="<?php echo $v['id'];?>"><?php echo $v['name'].'&nbsp;'.$v['link_user'].'&nbsp;'.$v['link_tel'];?></option>
-                        <?php } ?>
-                    </select>
-                    &nbsp;&nbsp;
-                    <a href="javascript:" id="vender_add">增加选项</a>
-                </td>
-                <td class="vatop tips"></td>
-            </tr>
+
             <tr>
                 <td colspan="2">
                     <label>重量：</label>
@@ -84,6 +97,7 @@
             <tr>
                 <td class="vatop">
                     <input class="txt" type="number" name="weight" id="weight" value=""/>
+                    G
                 </td>
                 <td class="vatop tips"></td>
             </tr>
@@ -94,7 +108,7 @@
             </tr>
             <tr>
                 <td class="vatop">
-                    <input class="txt" type="number" name="volume" id="volume" value=""/>
+                    <input class="txt" type="number" name="volume" id="volume" value=""/>cm³
                 </td>
                 <td class="vatop tips"></td>
             </tr>
@@ -105,7 +119,7 @@
             </tr>
             <tr>
                 <td class="vatop">
-                    <input class="txt" type="number" value="" name="jap_price" id="jap_price"/>
+                    <input class="txt" type="number" value="" name="jap_price" id="jap_price"/>JPY
                 </td>
                 <td class="vatop tips"></td>
             </tr>
@@ -131,26 +145,33 @@
                 </td>
                 <td class="vatop tips"></td>
             </tr>
+
             <tr>
                 <td colspan="2">
-                    <label class="validation">采购数量：</label>
+                    <label>付款方式：</label>
                 </td>
             </tr>
             <tr>
                 <td class="vatop">
-                    <input class="txt" type="number" value="" name="store_num" id="store_num"/>
+                    <select name="pay_type">
+                        <option>请选择</option>
+                        <option>银行汇款</option>
+                        <option>现金</option>
+                        <option>便利店支付</option>
+                        <option>支付宝</option>
+                    </select>
                 </td>
                 <td class="vatop tips"></td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <label class="validation">支付时间：</label>
+                    <label>支付时间：</label>
                 </td>
             </tr>
             <tr>
                 <td class="vatop">
-                    <input class="txt" type="date" value="" name="pay_date" id="pay_date"/>
-                    <input type="time" value="" name="pay_time" id="pay_time"/>
+                    <input class="txt date" type="text" value="" name="pay_date" id="pay_date"/>
+                    <input type="time" value="" name="pay_time" id="pay_time"/>&nbsp;&nbsp;例：2015-6-10 12:18
                 </td>
                 <td class="vatop tips"></td>
             </tr>
@@ -176,7 +197,7 @@
 <style type="text/css">
     #vender_div, #spec_div, #goods_div { width: 300px; border: 3px solid #333; padding: 10px; position: fixed; background: #fff; left: 50%; top: 50%; display: none; }
     #vender_div, #spec_div, #goods_div { margin-left: -150px; }
-    #vender_div { margin-top: -150px; }
+    #vender_div { margin-top: -175px; }
     #spec_div { margin-top: -50px; }
     #goods_div { margin-top: -150px; }
     #vender_div a.table-close, #spec_div a.table-close, #goods_div a.table-close { position: absolute; right: 0; top: 0; margin: 10px; }
@@ -221,6 +242,12 @@
         </tr>
         <tr>
             <td><input class="txt" type="text" name="vender_user" value=""/></td>
+        </tr>
+        <tr>
+            <td><label>邮箱：</label></td>
+        </tr>
+        <tr>
+            <td><input type="email" name="vender_email" value=""/></td>
         </tr>
         <tr>
             <td><label>电话：</label></td>
@@ -312,21 +339,26 @@ $(function(){
         var name = $('input[name="vender_name"]').val();
         var user = $('input[name="vender_user"]').val();
         var tel = $('input[name="vender_tel"]').val();
+        var email = $('input[name="vender_email"]').val();
         if(!name){
-            alert('请输入供应商名称');
+            alert('请输入供应商名称'); return false;
         }
         if(!user){
-            alert('请输入联系人名');
+            alert('请输入联系人名'); return false;
         }
         if(!tel){
-            alert('请输入联系电话');
+            alert('请输入联系电话'); return false;
         }
-        $.post('index.php?act=pur&op=store',{'form':'vender','name':name,'user':user,'tel':tel},function(data){
+        if(!email){
+            alert('请输入邮箱'); return false;
+        }
+        $.post('index.php?act=pur&op=store',{'form':'vender','name':name,'user':user,'tel':tel,'email': email},function(data){
             if(data.status == 1){
-                $("#vender").append('<option value="'+data.data.id+'" selected>'+name+'&nbsp;'+user+'&nbsp;'+tel+'</option>');
+                $("#vender").append('<option value="'+data.data.id+'" selected>'+name+'&nbsp;'+user+'&nbsp;'+tel+'&nbsp'+email+'</option>');
                 $('input[name="vender_name"]').val('');
                 $('input[name="vender_user"]').val('');
                 $('input[name="vender_tel"]').val('');
+                $('input[name="vender_email"]').val('');
                 $('#vender_div').hide();
             }else{
                 alert(data.msg)

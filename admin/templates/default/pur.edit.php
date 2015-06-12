@@ -21,6 +21,23 @@
     <div class="fixed-empty"></div>
     <form action="index.php?act=pur&op=update" method="post" name="order_form">
         <table class="table tb-type2">
+		            <tr>
+                <td colspan="2">
+                    <label>供应商：</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="vatop">
+                    <select id="vender" name="vender">
+                        <option value="">请选择</option>
+                        <?php if($output['venders']) foreach ($output['venders'] as $v) { ?>
+                        <option value="<?php echo $v['id'];?>" <?php if($output['order']['vender_id'] == $v['id']) echo 'selected'; ?>><?php echo $v['name'].'&nbsp;'.$v['link_user'].'&nbsp;'.$v['link_tel'];?></option>
+                        <?php } ?>
+                    </select>
+                    <a href="javascript:" id="vender_add">增加选项</a>
+                </td>
+                <td class="vatop tips"></td>
+            </tr>
             <tr>
                 <td colspan="2">
                     <label class="validation">商品</label>
@@ -41,12 +58,23 @@
             </tr>
             <tr>
                 <td colspan="2">
+                    <label class="validation">采购数量：</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="vatop">
+                    <input class="txt" type="number" value="<?php echo $output['order']['store_num']; ?>" name="store_num" id="store_num"/>
+                </td>
+                <td class="vatop tips"></td>
+            </tr>			
+            <tr>
+                <td colspan="2">
                     <label>商品规格：</label>
                 </td>
             </tr>
             <tr>
                 <td class="vatop">
-                    <input class="txt" type="text" value="<?php echo $output['order']['marque'];?>" name="marque" id="marque" maxlength="50" class="txt">
+                    <input class="txt" type="text" value="<?php echo $output['order']['marque'];?>" name="marque" id="marque" maxlength="50">
                     <select id="specifications" name="specifications">
                         <option value="">请选择</option>
                         <?php if($output['specs']) foreach ($output['specs'] as $v) { ?>
@@ -57,23 +85,7 @@
                 </td>
                 <td class="vatop tips"></td>
             </tr>
-            <tr>
-                <td colspan="2">
-                    <label>供应商：</label>
-                </td>
-            </tr>
-            <tr>
-                <td class="vatop">
-                    <select id="vender" name="vender">
-                        <option value="">请选择</option>
-                        <?php if($output['venders']) foreach ($output['venders'] as $v) { ?>
-                        <option value="<?php echo $v['id'];?>" <?php if($output['order']['vender_id'] == $v['id']) echo 'selected'; ?>><?php echo $v['name'].'&nbsp;'.$v['link_user'].'&nbsp;'.$v['link_tel'];?></option>
-                        <?php } ?>
-                    </select>
-                    <a href="javascript:" id="vender_add">增加选项</a>
-                </td>
-                <td class="vatop tips"></td>
-            </tr>
+
             <tr>
                 <td colspan="2">
                     <label>重量：</label>
@@ -82,6 +94,7 @@
             <tr>
                 <td class="vatop">
                     <input class="txt" type="number" name="weight" id="weight" value="<?php echo round($output['order']['weight'],2); ?>"/>
+                    G
                 </td>
                 <td class="vatop tips"></td>
             </tr>
@@ -92,7 +105,7 @@
             </tr>
             <tr>
                 <td class="vatop">
-                    <input class="txt" type="number" name="volume" id="volume" value="<?php echo round($output['order']['volume'], 2); ?>"/>
+                    <input class="txt" type="number" name="volume" id="volume" value="<?php echo round($output['order']['volume'], 2); ?>"/>cm³
                 </td>
                 <td class="vatop tips"></td>
             </tr>
@@ -103,7 +116,7 @@
             </tr>
             <tr>
                 <td class="vatop">
-                    <input class="txt" type="number" value="<?php echo $output['order']['jap_price']; ?>" name="jap_price" id="jap_price"/>
+                    <input class="txt" type="number" value="<?php echo $output['order']['jap_price']; ?>" name="jap_price" id="jap_price"/>JPY
                 </td>
                 <td class="vatop tips"></td>
             </tr>
@@ -129,14 +142,21 @@
                 </td>
                 <td class="vatop tips"></td>
             </tr>
+
             <tr>
                 <td colspan="2">
-                    <label class="validation">采购数量：</label>
+                    <label>付款方式：</label>
                 </td>
             </tr>
             <tr>
                 <td class="vatop">
-                    <input class="txt" type="number" value="<?php echo $output['order']['store_num']; ?>" name="store_num" id="store_num"/>
+                    <select name="pay_type">
+                        <option>请选择</option>
+                        <option <?php if($output['order']['pay_type']=='银行汇款') echo 'selected';?>>银行汇款</option>
+                        <option <?php if($output['order']['pay_type']=='现金') echo 'selected';?>>现金</option>
+                        <option <?php if($output['order']['pay_type']=='便利店支付') echo 'selected';?>>便利店支付</option>
+                        <option <?php if($output['order']['pay_type']=='支付宝') echo 'selected';?>>支付宝</option>
+                    </select>
                 </td>
                 <td class="vatop tips"></td>
             </tr>

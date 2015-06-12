@@ -136,10 +136,7 @@ class store_goods_onlineControl extends BaseSellerControl {
         Tpl::output ( 'sp_value', $sp_value );
         
         // 实例化店铺商品分类模型
-        $store_goods_class = Model('my_goods_class')->getClassTree ( array (
-                'store_id' => $_SESSION ['store_id'],
-                'stc_state' => '1' 
-        ) );
+        $store_goods_class = Model('goods_class')->getClassTree();
         Tpl::output('store_goods_class', $store_goods_class);
         $goodscommon_info['goods_stcids'] = trim($goodscommon_info['goods_stcids'], ',');
         Tpl::output('store_class_goods', explode(',', $goodscommon_info['goods_stcids']));

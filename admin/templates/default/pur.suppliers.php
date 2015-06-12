@@ -19,18 +19,22 @@
         </div>
     </div> 
     <div class="fixed-empty"></div>
+    <div class="trace">
+        <a href="index.php?act=pur&op=add&form=suppliers" class="btn-add" style="margin-top:5px; float:none;">添加供货商</a>
+    </div>
     <table class="table tb-type2" id="goods_list">
         <tr>
             <th>供应商名称</th>
             <th>联系人</th>
             <th>电话</th>
-            <!-- <th>操作</th> -->
+            <th>邮箱</th>
         </tr>
         <?php if($output['list']){ foreach ($output['list'] as $v) { ?>
         <tr>
             <td data-attr="suppliers_name" data-id="<?php echo $v['id']; ?>"><p><?php echo $v['name']; ?></p></td>
             <td data-attr="link_user" data-id="<?php echo $v['id']; ?>"><p><?php echo $v['link_user']; ?></p></td>
             <td data-attr="link_tel" data-id="<?php echo $v['id']; ?>"><p><?php echo $v['link_tel']; ?></p></td>
+            <td data-attr="link_email" data-id="<?php echo $v['id']; ?>"><p><?php echo $v['link_email']; ?></p></td>
             <!-- <td>
                 <a href="">删除</a>
             </td> -->
@@ -97,6 +101,19 @@ $(function(){
         $.post('index.php?act=pur&op=update',{'form':'suppliers','id':id, 'link_tel': $(this).val()}, function(data){
             if(data.status == 1){
                 $('input[name="link_tel"]').parent('td').html(html);
+                animate = false;
+            }else{
+                alert(data.msg);
+            }
+            
+        },'json');
+    });
+    $('input[name="link_email"]').live('blur', function(){
+        var id  = $(this).parent('td').attr('data-id');
+        var html = '<p>'+$(this).val()+'</p>';
+        $.post('index.php?act=pur&op=update',{'form':'suppliers','id':id, 'link_email': $(this).val()}, function(data){
+            if(data.status == 1){
+                $('input[name="link_email"]').parent('td').html(html);
                 animate = false;
             }else{
                 alert(data.msg);
