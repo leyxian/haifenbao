@@ -82,7 +82,7 @@
             <!-- <td><?php if($v['outtime']) echo '已出库';?></td> -->
 			 <td><?php echo $v['author']?></td>		
             <td>
-                <a href="javascript:" class="chuku" data-id="<?php echo $v['id'];?>">出库</a><br/>
+                <a href="javascript:" class="chuku" <?php if($v['store_num']<=$v['out_num']){?>style="color:grey" data-id="0" <?php }else{?>data-id="<?php echo $v['id'];?>"<?php } ?>>出库</a><br/>
                 <!-- <a href="javascript:del(<?php echo $v['id']?>)">删除</a> -->
             </td>
         </tr>
@@ -131,8 +131,12 @@
 <script type="text/javascript">
 $('input[name="pay_date"]').datepicker({dateFormat: 'yy-mm-dd'});
 $('.chuku').click(function(){
-    $('#ck_div').show();
-    $('input[name="instore_id"]').val($(this).attr('data-id'));
+    if($(this).attr('data-id')>0){
+        $('#ck_div').show();
+        $('input[name="instore_id"]').val($(this).attr('data-id'));
+    }else{
+        return false;
+    }
 });
 $('#ck_submit').click(function(){
     if(!$('input[name="store_num"]').val() || $('input[name="store_num"]').val() < 1){

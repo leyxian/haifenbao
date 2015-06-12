@@ -96,7 +96,9 @@
             <!-- <td><?php if($v['store_time']) echo '已入库';?></td> -->
             <td>
                 <a href="javascript:" class="ruku" data-id="<?php echo $v['id'];?>" data-date="<?php if($v['pay_time']) echo date('Y-m-d',$v['pay_time']); else echo 0; ?>" data-time="<?php if($v['pay_time']) echo date('H:i',$v['pay_time']); else echo 0;?>" data-num="<?php echo $v['store_num']; ?>">入库</a><br/>
-                <a href="index.php?act=pur&op=edit&id=<?php echo $v['id']; ?>">编辑</a><br/>
+                
+                <a href="<?php if($v['instore_time']){?>javascript:<?php }else{ ?>index.php?act=pur&op=edit&id=<?php echo $v['id']; }?>" <?php if($v['instore_time']){?>style="color:grey"<?php }?>>编辑</a>
+                
                 <!-- <a href="javascript:" class="del-btn" data-id="<?php echo $v['id'];?>">删除</a> -->
             </td>
         </tr>

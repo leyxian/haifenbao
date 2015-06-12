@@ -223,13 +223,14 @@ class purControl extends SystemControl {
                                     'store_num' => $num,
                                     'author' => $admininfo['name'],
                                     'location' => $location,
-                                    'addtime' => $_SERVER['REQUEST_TIME']
+                                    'addtime' => $_SERVER['REQUEST_TIME'],
                                 )
                             );
                             Model('pur_order')->update(
                                 array(
                                     'id' => $id,
-                                    'in_num' => $row['in_num'] + $num
+                                    'in_num' => $row['in_num'] + $num,
+                                    'instore_time' => $_SERVER['REQUEST_TIME']
                                 )
                             );
                             $pur_goods = Model('pur_goods');

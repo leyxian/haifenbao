@@ -61,3 +61,7 @@ ALTER TABLE `zqshop_pur_suppliers`
 ADD COLUMN `link_email`  varchar(20) NULL COMMENT '邮箱' AFTER `link_tel`;
 ALTER TABLE `zqshop_pur_order`
 ADD COLUMN `pay_type`  varchar(20) NULL COMMENT '付款方式' AFTER `jap_price`;
+
+06121
+ALTER TABLE `zqshop_pur_order`
+ADD COLUMN `instore_time`  int(10) NULL DEFAULT 0 COMMENT '入库时间' AFTER `in_num`;
