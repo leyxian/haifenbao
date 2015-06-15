@@ -40,7 +40,11 @@ $arr = array(
 				'text'	=> $lang['nc_operation']),
 			8 => array(
 				'args'	=> 'stat',
-				'text'	=> $lang['nc_stat'])
+				'text'	=> $lang['nc_stat']),
+			9 => array(
+				'args' => 'crowd',
+				'text' => '众筹'
+			),
 		),
 		'left' =>array(
 			0 => array(
@@ -121,6 +125,7 @@ $arr = array(
 				'text' => $lang['nc_transport'],
 				'list' => array(
 					array('args'=>'tran_order,tran_order,transport',					'text'=>$lang['nc_transport_manage']),
+					array('args' =>'index,shipping_fee,transport,', 'text' => '运费查询')
 					//array('args'=>'index,tran_deliver,transport',				'text'=>$lang['nc_member_path_deliver']),
 					//array('args'=>'return_manage,store_deliver_set,transport',	'text'=>$lang['nc_member_path_daddress']),				
 				)
@@ -177,6 +182,13 @@ $arr = array(
 					array('args'=>'goods,stat_trade,stat',				'text'=>$lang['nc_stattrade']),
 					array('args'=>'promotion,stat_marketing,stat',		'text'=>$lang['nc_statmarketing']),
 					array('args'=>'refund,stat_aftersale,stat',			'text'=>$lang['nc_stataftersale']),
+				)
+			),
+			9 => array(
+				'nav' => 'crowd',
+				'text' => '众筹',
+				'list' => array(
+					array('args'=>'index,crowd,crowd', 'text' => '众筹')
 				)
 			)
 		)

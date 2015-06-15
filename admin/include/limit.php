@@ -45,6 +45,7 @@ $_limit =  array(
 		)),		
 	array('name'=>$lang['nc_transport'], 'child'=>array(
 		array('name'=>$lang['nc_transport_manage'], 'op'=>null, 'act'=>'tran_order'),
+		array('name'=>'运费查询', 'op'=>null, 'act'=>'shipping_fee'),
 		//array('name'=>$lang['nc_member_path_deliver'], 'op'=>null, 'act'=>'tran_order'),
 		//array('name'=>$lang['nc_member_path_daddress'], 'op'=>null, 'act'=>'tran_order'),
 		)),		
@@ -87,6 +88,9 @@ $_limit =  array(
 		array('name'=>$lang['nc_statmarketing'], 'op'=>null, 'act'=>'stat_marketing'),
 		array('name'=>$lang['nc_stataftersale'], 	'op'=>null, 'act'=>'stat_aftersale'),
 		)),
+	array('name' => '众筹', 'child' => array(
+		array('name' => '众筹列表', 'op'=> 'index', 'act' => 'crowd'),
+	)),
 );
 
 if (C('mobile_isuse') !== NULL){

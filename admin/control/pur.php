@@ -16,7 +16,6 @@ class purControl extends SystemControl {
         $table = Model('pur_order');
         $goods_table = Model('pur_goods');
         $table2 = Model('pur_suppliers');
-        $where = '';
         if($_GET['id'])
             $where .= 'id='.$_GET['id'];
         $rows = $table->page(10)->where($where)->order('id DESC')->select();
